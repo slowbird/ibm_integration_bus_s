@@ -44,7 +44,7 @@ define :iib_install_mq do
 	  flags "-e"
 	  returns [0,31]
 	  code <<-EOS
-	  cd "#{unpack_dir}/WebSphere_MQ_V7.5.0.1"
+	  cd "#{unpack_dir}/WebSphere_MQ"
 	  ./mqlicense.sh -accept -text_only
 	  sudo rpm -ivh #{extra_rpm_options} MQSeriesRuntime-*.x86_64.rpm
 	  sudo rpm -ivh #{extra_rpm_options} MQSeriesServer-*.x86_64.rpm
