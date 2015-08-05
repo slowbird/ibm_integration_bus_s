@@ -59,9 +59,12 @@ sed -i '/End of file/i\mqm              soft   nproc            4096'  /etc/secu
 
 # comment out net bridge params as these cause sysctl -p to fail
 sed -i '/net.bridge.bridge-nf-call.*/ s/^/#/g' /etc/sysctl.conf
+# comment out ipv6 as these cause sysctl -p to fail
+sed -i '/net.ipv6.conf.all.disable_ipv6*/ s/^/#/g' /etc/sysctl.conf
 # now update the parameters on the system dynamically
 sysctl -p
 sed -i '/net.bridge.bridge-nf-call.*/ s/#//g' /etc/sysctl.conf
+sed -i '/net.ipv6.conf.all.disable_ipv6*/ s/#//g' /etc/sysctl.conf
 
 # sudoers - for MQ
 if [ -f /etc/sudoers ]; then
